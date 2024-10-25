@@ -9,12 +9,8 @@ sudo xfs_growfs /var
 
 echo "Installing kubectl...."
 sudo curl -O https://s3.us-west-2.amazonaws.com/amazon-eks/1.31.0/2024-09-12/bin/linux/amd64/kubectl
-if [ $? -eq 0 ] 
-then
-    chmod +x ./kubectl
-    sudo mv kubectl /usr/local/bin/kubectl
-fi
-
+chmod +x ./kubectl
+sudo mv kubectl /usr/local/bin/kubectl
 kube_ver = kubectl -version
 echo "kube_version: $kube_ver"
 
