@@ -9,8 +9,8 @@ spec:
  containers:
   - name: nginx
     image: nginx
-    resource:
-      request: 
+    resources:
+      requests: 
         cpu: "200m"
         memory: "500Mi"
       limits:
