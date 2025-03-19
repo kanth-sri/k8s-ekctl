@@ -1,0 +1,38 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata: 
+  name: Deployment1
+  labels:
+    proj: dummy
+    env: dev
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      proj: dummy
+      env: dev
+  template:
+    metadata:
+      labels:
+        proj: dummy
+        env: dev
+    spec:
+     containers:
+     - name: nginx
+       image: nginx
+
+---
+
+kind: Service
+apiVersion: v1 
+metadata:
+  name: svcc
+spec:
+  selector:
+    proj: dummy
+    env: dev
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
+  type: LoadBalancer
